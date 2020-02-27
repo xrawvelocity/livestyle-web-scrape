@@ -5,15 +5,18 @@ const express = require('express')
 const router = express.Router()
 
 router.get('/scrapeAmazon', (req, res, next)=>{
-
+    console.log('cheetah')
     axios.get(`https://www.amazon.com/s?k=${req.query.q}`)
         .then((response) => {
+          console.log('penguin', response.status)
             if(response.status === 200) {
                 const html = response.data;
                 const $ = cheerio.load(html); 
                 let amazonList = [];
                 $('.a-section.a-spacing-medium').each(function(i, elem) {
+                  console.log('lion')
                   if($(this).find('.a-link-normal.a-text-normal').attr('href')){
+                    console.log('bear')
                     amazonList[i] = {
                         title: $(this).find('.a-link-normal.a-text-normal').attr('href').split('/')[1].replace(/-/g, ' '),
                         url: $(this).find('.a-link-normal.a-text-normal').attr('href'),
@@ -22,10 +25,10 @@ router.get('/scrapeAmazon', (req, res, next)=>{
                     }      
                   }
                 });
-                console.log(amazonList)
+                console.log(amazonList, 'snake')
                 res.json({amazonList})
         }
-    }, (error) => console.log(error) );
+    }, (error) => console.log(error, 'zebra') );
 
 
 })
