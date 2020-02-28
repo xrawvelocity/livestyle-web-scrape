@@ -5,7 +5,7 @@ const express = require('express')
 const router = express.Router()
 
 router.get('/scrapeAmazon', (req, res, next)=>{
-    console.log('cheetah?')
+    console.log('cheetah?!!')
     axios.get(`https://www.amazon.com/s?k=${req.query.q}`,
     {
       headers: {
