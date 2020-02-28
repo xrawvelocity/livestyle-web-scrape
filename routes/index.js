@@ -31,6 +31,7 @@ router.get('/scrapeAmazon', (req, res, next)=>{
                   }
                 });
                 console.log(amazonList, 'snake')
+                
                 res.json({amazonList})
         }
     }, (error) => console.log(error, 'zebra') );
